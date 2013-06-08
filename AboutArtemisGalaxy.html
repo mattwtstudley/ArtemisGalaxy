@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 3.6  (Windows)">
+	<META NAME="AUTHOR" CONTENT="Matthew Studley">
+	<META NAME="CREATED" CONTENT="20130608;12434956">
+	<META NAME="CHANGEDBY" CONTENT="Matthew Studley">
+	<META NAME="CHANGED" CONTENT="20130608;13461931">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+		H1 { margin-bottom: 0.08in }
+		H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+		H1.cjk { font-family: "Microsoft YaHei"; font-size: 16pt }
+		H1.ctl { font-family: "Mangal"; font-size: 16pt }
+		H2 { margin-bottom: 0.08in }
+		H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+		H2.cjk { font-family: "Microsoft YaHei"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Mangal"; font-size: 14pt; font-style: italic }
+		H4 { margin-bottom: 0.08in }
+		H4.western { font-family: "Arial", sans-serif; font-size: 11pt; font-style: italic }
+		H4.cjk { font-family: "Microsoft YaHei"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Mangal"; font-size: 11pt; font-style: italic }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1 CLASS="western">Artemis Galaxy:</H1>
+<P>&ldquo;<I><FONT FACE="Arial, sans-serif">The Torgoth are coming in
+from the east. The Krailens from the north. I could destroy the enemy
+fleets with a volley of nukes, but is this sector worth it? The USFP
+forces to the west might need those very nukes to defend their
+outpost. Will this sector's resources be worth the ammunition used to
+capture it?&rdquo; -Captains log, U.S.F. Crow, Sector C-7 in the Echo
+Quadrant.</FONT></I></P>
+<H2 CLASS="western">What is it?</H2>
+<P><FONT FACE="Arial, sans-serif">Artemis-Galaxy is a strategy RPG
+&ldquo;wrapper&rdquo; around the Artemis Spaceship Bridge Simulator
+written by Thom Robertson. It's purpose is to create an environment
+that allows for larger scale Artemis campaigns where multiple bridge
+crews can work together against a common goal &ndash; liberating an
+entire quadrant from enemy hands.</FONT></P>
+<H2 CLASS="western">How does it work?</H2>
+<P><FONT FACE="Arial, sans-serif">AG works by arranging multiple
+Artemis maps onto a grid, and then tracking traits (such as who
+&ldquo;owns&rdquo; the sector, how many Torgoth are currently there,
+etc...). The AG &ldquo;engine&rdquo; would adjust those numbers as
+crews complete missions in those sectors. </FONT>
+</P>
+<P><FONT FACE="Arial, sans-serif">Crews play sectors by clicking on a
+grid-sector on a larger map. When the captain decides that they want
+to play that sector, AG would take a base mission XML file, add in
+enemy fleets and friendly stations based on the current state of that
+sector (and neighboring sectors!), and present it to the captain as a
+downloadable zip. </FONT>
+</P>
+<P><FONT FACE="Arial, sans-serif">The crew plays through the mission,
+protecting their stations or conquering enemy territory. The mission
+log gets generated as they play, and the captain submits this mission
+log back into the AG website. The mission log provides information
+such as how many nukes fired, enemies destroyed, and if the crew was
+destroyed. The sector, and surrounding sectors, are then all updated
+to reflect the result of that mission. </FONT>
+</P>
+<P><FONT FACE="Arial, sans-serif">Multiple bridge crews could play in
+a single campaign map, and would have to work together to attack or
+defend strategically important sectors. They would also have to keep
+an eye on ammunition consumption. Ship losses become problematic as
+there are only so many resources to go around, and a crew might want
+to retreat from a sector instead of risking the loss of an expensive
+battleship. </FONT>
+</P>
+<P><BR><BR>
+</P>
+<H4 CLASS="western">Additional Concepts / Features:</H4>
+<UL>
+	<LI><P><FONT FACE="Arial, sans-serif"><B>Sector Capturing:</B><SPAN STYLE="font-weight: normal">
+	Sectors can only be captured if there is a USFP sector adjacent, and
+	there is no obstacle impeding your travel to that sector (see
+	below).</SPAN></FONT></P>
+	<LI><P><FONT FACE="Arial, sans-serif"><B>Sector Barriers: </B><SPAN STYLE="font-weight: normal">Certain
+	sectors can only be captured from specific directions</SPAN>. This
+	allows grand-scale natural obstacle, such as giant asteroid fields
+	that protect a sector from a certain side. </FONT>
+	</P>
+	<LI><P><FONT FACE="Arial, sans-serif"><B>Sector Difficulty: </B><SPAN STYLE="font-weight: normal">Sectors
+	vary in difficulty. A sector that has a high economic or tactical
+	value might be very hard to take, with the enemy fleet directing
+	lots of carriers to it. Other sectors might be more desolate, and
+	have very little in the way of enemy resistance. </SPAN></FONT>
+	</P>
+	<LI><P><FONT FACE="Arial, sans-serif"><B>Turn Based:</B><SPAN STYLE="font-weight: normal">
+	The map updates on a turn basis. Currently I am thinking each turn
+	is a week in real time, allowing weekend crews to play without
+	needing to disrupt the work week to defend a sector from attack. </SPAN></FONT>
+	</P>
+	<LI><P><FONT FACE="Arial, sans-serif"><B>Sector production:</B><SPAN STYLE="font-weight: normal">
+	Sectors only produce so many resources per &ldquo;turn&rdquo;.
+	Sectors owned by enemy fleets produce more ships per turn. Sectors
+	owned by the USFP generate ammunition and Ship-Points (S.P. To be
+	used to replace lost ships.)</SPAN></FONT></P>
+	<LI><P><FONT FACE="Arial, sans-serif"><B>Sector Reinforcement:
+	</B><SPAN STYLE="font-weight: normal">Following the same sector
+	obstacle rule, enemy sectors can be reinforced from adjacent enemy
+	sectors. If an adjacent enemy sector has extra ships available, it
+	will send them to help out the sector being attacked. They will fill
+	in from that border of the map, too. </SPAN></FONT>
+	</P>
+	<LI><P><FONT FACE="Arial, sans-serif"><B>Sector Attacks:</B><SPAN STYLE="font-weight: normal">
+	If an enemy sector has extra ships, it will attack an adjacent USFP
+	sector. If the USFP sector is not reinforced by a bridge crew in
+	time, the sector is lost to enemies, and needs to be captured again.
+	</SPAN></FONT>
+	</P>
+	<LI><P><FONT FACE="Arial, sans-serif"><B>Crew Registration:</B><SPAN STYLE="font-weight: normal">
+	A captains registers a ship, and the crew signs on with that ship.
+	Crew members can serve on other ships, too. Captains sign up for
+	campaigns. </SPAN></FONT>
+	</P>
+</UL>
+<P><BR><BR>
+</P>
+<H2 CLASS="western">Who:</H2>
+<P>	<FONT FACE="Arial, sans-serif">This is being developed by </FONT><FONT FACE="Arial, sans-serif">me,
+</FONT><FONT FACE="Arial, sans-serif">Matt Studley, initially. </FONT><FONT FACE="Arial, sans-serif">I
+am probably going to be looking for help, especially with generating
+the blank mission files needed. If you are experienced in any of the
+technologies below and want to help, contact me. </FONT>
+</P>
+<H2 CLASS="western"><FONT FACE="Arial, sans-serif">Technologies:</FONT></H2>
+<P><FONT FACE="Arial, sans-serif">	</FONT><FONT FACE="Arial, sans-serif"><B>Here
+are the technologies I am currently using to develop A.G:</B></FONT></P>
+<UL>
+	<LI><P><FONT FACE="Arial, sans-serif">ASP.net / C#.net 4.5</FONT></P>
+	<LI><P><FONT FACE="Arial, sans-serif">Visual Studio Express 2012 for
+	Web</FONT></P>
+	<LI><P><FONT FACE="Arial, sans-serif">Jquery</FONT></P>
+	<LI><P><FONT FACE="Arial, sans-serif">Considering Bootstrap</FONT></P>
+	<LI><P><FONT FACE="Arial, sans-serif">SQL Server 2012 Express</FONT></P>
+</UL>
+<P><BR><BR>
+</P>
+<H2 CLASS="western"><FONT FACE="Arial, sans-serif">Contact Info:</FONT></H2>
+<P><FONT FACE="Arial, sans-serif">Any questions, please contact Matt
+Studley at mattwt.studley&lt;at&gt;gmail.com</FONT></P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>
