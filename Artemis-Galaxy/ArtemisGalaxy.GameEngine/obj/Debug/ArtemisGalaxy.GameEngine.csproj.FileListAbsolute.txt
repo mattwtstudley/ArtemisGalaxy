@@ -1,0 +1,9 @@
+C:\Users\Sarge\Documents\Development\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\ArtemisGalaxyDev.sdf
+C:\Users\Sarge\Documents\Development\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\ArtemisGalaxy.GameEngine.dll.config
+C:\Users\Sarge\Documents\Development\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\ArtemisGalaxy.GameEngine.dll
+C:\Users\Sarge\Documents\Development\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\ArtemisGalaxy.GameEngine.pdb
+C:\Users\Sarge\Documents\Development\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\EntityFramework.dll
+C:\Users\Sarge\Documents\Development\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\EntityFramework.xml
+C:\Users\Sarge\Documents\Development\Artemis-Galaxy\ArtemisGalaxy.GameEngine\obj\Debug\ArtemisGalaxy.GameEngine.csprojResolveAssemblyReference.cache
+C:\Users\Sarge\Documents\Development\Artemis-Galaxy\ArtemisGalaxy.GameEngine\obj\Debug\ArtemisGalaxy.GameEngine.dll
+C:\Users\Sarge\Documents\Development\Artemis-Galaxy\ArtemisGalaxy.GameEngine\obj\Debug\ArtemisGalaxy.GameEngine.pdb

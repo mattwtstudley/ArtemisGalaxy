@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ArtemisGalaxyDevModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ArtemisGalaxyDevModelStoreContainer">
+    <EntitySet Name="CampaignEnrollment" EntityType="ArtemisGalaxyDevModel.Store.CampaignEnrollment" store:Type="Tables" />
+    <EntitySet Name="Campaigns" EntityType="ArtemisGalaxyDevModel.Store.Campaigns" store:Type="Tables" />
+    <EntitySet Name="CrewMembers" EntityType="ArtemisGalaxyDevModel.Store.CrewMembers" store:Type="Tables" />
+    <EntitySet Name="Sectors" EntityType="ArtemisGalaxyDevModel.Store.Sectors" store:Type="Tables" />
+    <EntitySet Name="Ships" EntityType="ArtemisGalaxyDevModel.Store.Ships" store:Type="Tables" />
+    <AssociationSet Name="fk_CampaignEnrollment_Campaigns" Association="ArtemisGalaxyDevModel.Store.fk_CampaignEnrollment_Campaigns">
+      <End Role="Campaigns" EntitySet="Campaigns" />
+      <End Role="CampaignEnrollment" EntitySet="CampaignEnrollment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CampaignEnrollment_CrewMembers" Association="ArtemisGalaxyDevModel.Store.fk_CampaignEnrollment_CrewMembers">
+      <End Role="CrewMembers" EntitySet="CrewMembers" />
+      <End Role="CampaignEnrollment" EntitySet="CampaignEnrollment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CampaignEnrollment_Ships" Association="ArtemisGalaxyDevModel.Store.fk_CampaignEnrollment_Ships">
+      <End Role="Ships" EntitySet="Ships" />
+      <End Role="CampaignEnrollment" EntitySet="CampaignEnrollment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sector_campaign" Association="ArtemisGalaxyDevModel.Store.fk_sector_campaign">
+      <End Role="Campaigns" EntitySet="Campaigns" />
+      <End Role="Sectors" EntitySet="Sectors" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ships_CrewMembers" Association="ArtemisGalaxyDevModel.Store.fk_Ships_CrewMembers">
+      <End Role="CrewMembers" EntitySet="CrewMembers" />
+      <End Role="Ships" EntitySet="Ships" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CampaignEnrollment">
+    <Key>
+      <PropertyRef Name="campaignId" />
+      <PropertyRef Name="shipId" />
+      <PropertyRef Name="crewMemberId" />
+    </Key>
+    <Property Name="campaignId" Type="int" Nullable="false" />
+    <Property Name="shipId" Type="bigint" Nullable="false" />
+    <Property Name="crewMemberId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Campaigns">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="maxPlayers" Type="smallint" Nullable="false" />
+    <Property Name="sectorMapDirectory" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="mapSizeX" Type="int" Nullable="false" />
+    <Property Name="mapSizeY" Type="int" Nullable="false" />
+    <Property Name="startDate" Type="datetime" Nullable="false" />
+    <Property Name="endDate" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CrewMembers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="login_name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="passwd" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="timeZone" Type="nvarchar" Nullable="false" MaxLength="4" />
+    <Property Name="characterName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Sectors">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="campaignId" Type="int" Nullable="false" />
+    <Property Name="locationX" Type="int" Nullable="false" />
+    <Property Name="locationY" Type="int" />
+    <Property Name="baseMissionFileName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="canTravelNorth" Type="bit" Nullable="false" />
+    <Property Name="canTravelNorthEast" Type="bit" Nullable="false" />
+    <Property Name="canTravelEast" Type="bit" Nullable="false" />
+    <Property Name="canTravelSouthEast" Type="bit" Nullable="false" />
+    <Property Name="canTravelSouth" Type="bit" Nullable="false" />
+    <Property Name="canTravelSouthWest" Type="bit" Nullable="false" />
+    <Property Name="canTravelWest" Type="bit" Nullable="false" />
+    <Property Name="canTravelNorthWest" Type="bit" Nullable="false" />
+    <Property Name="difficulty" Type="tinyint" Nullable="false" />
+    <Property Name="production" Type="int" Nullable="false" />
+    <Property Name="isClaimed" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ships">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="ownerId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_CampaignEnrollment_Campaigns">
+    <End Role="Campaigns" Type="ArtemisGalaxyDevModel.Store.Campaigns" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CampaignEnrollment" Type="ArtemisGalaxyDevModel.Store.CampaignEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Campaigns">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CampaignEnrollment">
+        <PropertyRef Name="campaignId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CampaignEnrollment_CrewMembers">
+    <End Role="CrewMembers" Type="ArtemisGalaxyDevModel.Store.CrewMembers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CampaignEnrollment" Type="ArtemisGalaxyDevModel.Store.CampaignEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CrewMembers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CampaignEnrollment">
+        <PropertyRef Name="crewMemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CampaignEnrollment_Ships">
+    <End Role="Ships" Type="ArtemisGalaxyDevModel.Store.Ships" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CampaignEnrollment" Type="ArtemisGalaxyDevModel.Store.CampaignEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ships">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CampaignEnrollment">
+        <PropertyRef Name="shipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sector_campaign">
+    <End Role="Campaigns" Type="ArtemisGalaxyDevModel.Store.Campaigns" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sectors" Type="ArtemisGalaxyDevModel.Store.Sectors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Campaigns">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sectors">
+        <PropertyRef Name="campaignId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ships_CrewMembers">
+    <End Role="CrewMembers" Type="ArtemisGalaxyDevModel.Store.CrewMembers" Multiplicity="1" />
+    <End Role="Ships" Type="ArtemisGalaxyDevModel.Store.Ships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CrewMembers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ships">
+        <PropertyRef Name="ownerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

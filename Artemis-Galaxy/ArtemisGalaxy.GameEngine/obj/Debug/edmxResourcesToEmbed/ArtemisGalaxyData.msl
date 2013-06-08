@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ArtemisGalaxyDevModelStoreContainer" CdmEntityContainer="ArtemisGalaxyDevEntities">
+    <EntitySetMapping Name="CampaignEnrollments">
+      <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.CampaignEnrollment">
+        <MappingFragment StoreEntitySet="CampaignEnrollment">
+          <ScalarProperty Name="campaignId" ColumnName="campaignId" />
+          <ScalarProperty Name="shipId" ColumnName="shipId" />
+          <ScalarProperty Name="crewMemberId" ColumnName="crewMemberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Campaigns">
+      <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.Campaign">
+        <MappingFragment StoreEntitySet="Campaigns">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="maxPlayers" ColumnName="maxPlayers" />
+          <ScalarProperty Name="sectorMapDirectory" ColumnName="sectorMapDirectory" />
+          <ScalarProperty Name="mapSizeX" ColumnName="mapSizeX" />
+          <ScalarProperty Name="mapSizeY" ColumnName="mapSizeY" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CrewMembers">
+      <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.CrewMember">
+        <MappingFragment StoreEntitySet="CrewMembers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login_name" ColumnName="login_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="passwd" ColumnName="passwd" />
+          <ScalarProperty Name="timeZone" ColumnName="timeZone" />
+          <ScalarProperty Name="characterName" ColumnName="characterName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sectors">
+      <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.Sector">
+        <MappingFragment StoreEntitySet="Sectors">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="campaignId" ColumnName="campaignId" />
+          <ScalarProperty Name="locationX" ColumnName="locationX" />
+          <ScalarProperty Name="locationY" ColumnName="locationY" />
+          <ScalarProperty Name="baseMissionFileName" ColumnName="baseMissionFileName" />
+          <ScalarProperty Name="canTravelNorth" ColumnName="canTravelNorth" />
+          <ScalarProperty Name="canTravelNorthEast" ColumnName="canTravelNorthEast" />
+          <ScalarProperty Name="canTravelEast" ColumnName="canTravelEast" />
+          <ScalarProperty Name="canTravelSouthEast" ColumnName="canTravelSouthEast" />
+          <ScalarProperty Name="canTravelSouth" ColumnName="canTravelSouth" />
+          <ScalarProperty Name="canTravelSouthWest" ColumnName="canTravelSouthWest" />
+          <ScalarProperty Name="canTravelWest" ColumnName="canTravelWest" />
+          <ScalarProperty Name="canTravelNorthWest" ColumnName="canTravelNorthWest" />
+          <ScalarProperty Name="difficulty" ColumnName="difficulty" />
+          <ScalarProperty Name="production" ColumnName="production" />
+          <ScalarProperty Name="isClaimed" ColumnName="isClaimed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ships">
+      <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.Ship">
+        <MappingFragment StoreEntitySet="Ships">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
