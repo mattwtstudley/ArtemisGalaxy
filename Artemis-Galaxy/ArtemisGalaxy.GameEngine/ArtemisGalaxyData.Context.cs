@@ -30,5 +30,7 @@ namespace ArtemisGalaxy.GameEngine
         public DbSet<CrewMember> CrewMembers { get; set; }
         public DbSet<Sector> Sectors { get; set; }
         public DbSet<Ship> Ships { get; set; }
+        public DbSet<EnemyShip> EnemyShips { get; set; }
+        public DbSet<EnemyShipSectorAssignment> EnemyShipSectorAssignments { get; set; }
     }
 }

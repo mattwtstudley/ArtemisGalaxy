@@ -50,7 +50,52 @@ namespace ArtemisGalaxy.GameEngine
 
         private void processUnClaimedSector(Sector sector)
         {
-            throw new NotImplementedException();
+            //Things we need to do here:
+            //  Each sector has a production number. We'll need to look up the production of each sector, and then produce that many ships based on some sort of logic. 
+            //  Thinking that the sector difficulty rating adjusts the weight on the ship types that we should produce in this sector. 
+            //  Also, each sector has certain ships it should produce and not produce, and how many counts as "full" for that sector. 
+            //  Sectors should have a full and max amount for each ship. This allows us to control the maximum number of ships that "backfill" into other sectors. 
+
+            //Get the total weight for production in this sector. This lets us calculate the % chance we'll produce a ship below. 
+            var totalProductionWeight = sector.EnemyShipSectorAssignments.Sum(w => w.productionWeight * (w.maxAmount - w.currentAmount));
+
+            //Get the lowest ship cost. We'll stop once we've produced as much as we can. 
+            var lowestShipCost = sector.EnemyShipSectorAssignments.Min(p => p.EnemyShip.cost);
+
+            //Get the list of ships we should produce for this sector. 
+            var shipsToProduce = sector.EnemyShipSectorAssignments.ToList();
+
+            //Set the initial amount of production we have available. 
+            int productionRemaining = sector.production;
+            Random numberGenerator = new Random();
+
+            //This loop keeps us producing ships until we've spent all of our production. 
+            while (productionRemaining >= lowestShipCost)
+            {
+                foreach (var shipToProduce in shipsToProduce)
+                {
+                    if (shipToProduce.EnemyShip.cost > productionRemaining)
+                    {
+                        //If we can't afford to make any more of this ship, move on. 
+                        continue;
+                    }
+                    else if (shipToProduce.currentAmount < shipToProduce.maxAmount)
+                    {
+                        var chanceToProduce = ((double)shipToProduce.productionWeight / (double)totalProductionWeight);
+                        double randNumber = numberGenerator.NextDouble();
+
+                        if (randNumber <= chanceToProduce)
+                        {
+                            //Produce the ship.
+                            shipToProduce.currentAmount++;
+                            //Remove the production remaining from the sector...
+                            productionRemaining -= shipToProduce.EnemyShip.cost;
+                            //Remove this ship's weight out of the total weight, making other ships more likely to be picked.
+                            totalProductionWeight -= shipToProduce.productionWeight;
+                        }
+                    }
+                }
+            }
         }
 
         private void processClaimedSector(Sector sector)

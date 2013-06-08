@@ -14,6 +14,11 @@ namespace ArtemisGalaxy.GameEngine
     
     public partial class Sector
     {
+        public Sector()
+        {
+            this.EnemyShipSectorAssignments = new HashSet<EnemyShipSectorAssignment>();
+        }
+    
         public long id { get; set; }
         public int campaignId { get; set; }
         public int locationX { get; set; }
@@ -32,5 +37,6 @@ namespace ArtemisGalaxy.GameEngine
         public bool isClaimed { get; set; }
     
         public virtual Campaign Campaign { get; set; }
+        public virtual ICollection<EnemyShipSectorAssignment> EnemyShipSectorAssignments { get; set; }
     }
 }

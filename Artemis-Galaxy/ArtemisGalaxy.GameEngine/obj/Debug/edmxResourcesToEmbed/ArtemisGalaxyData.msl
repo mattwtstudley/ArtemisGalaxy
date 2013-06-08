@@ -69,5 +69,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="EnemyShips">
+      <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.EnemyShip">
+        <MappingFragment StoreEntitySet="EnemyShips">
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="vesselId" ColumnName="vesselId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnemyShipSectorAssignments">
+      <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.EnemyShipSectorAssignment">
+        <MappingFragment StoreEntitySet="EnemyShipSectorAssignments">
+          <ScalarProperty Name="currentAmount" ColumnName="currentAmount" />
+          <ScalarProperty Name="productionWeight" ColumnName="productionWeight" />
+          <ScalarProperty Name="fleetNumber" ColumnName="fleetNumber" />
+          <ScalarProperty Name="maxAmount" ColumnName="maxAmount" />
+          <ScalarProperty Name="fullAmount" ColumnName="fullAmount" />
+          <ScalarProperty Name="locationY" ColumnName="locationY" />
+          <ScalarProperty Name="locationX" ColumnName="locationX" />
+          <ScalarProperty Name="EnemyShipId" ColumnName="EnemyShipId" />
+          <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

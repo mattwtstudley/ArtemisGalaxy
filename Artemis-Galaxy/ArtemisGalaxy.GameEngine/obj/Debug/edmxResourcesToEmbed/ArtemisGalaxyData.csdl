@@ -26,6 +26,16 @@
       <End Role="CrewMembers" EntitySet="CrewMembers" />
       <End Role="Ships" EntitySet="Ships" />
     </AssociationSet>
+    <EntitySet Name="EnemyShips" EntityType="ArtemisGalaxyDevModel.EnemyShip" />
+    <EntitySet Name="EnemyShipSectorAssignments" EntityType="ArtemisGalaxyDevModel.EnemyShipSectorAssignment" />
+    <AssociationSet Name="fk_EnemyShipSectorAssignments_EnemyShips" Association="ArtemisGalaxyDevModel.fk_EnemyShipSectorAssignments_EnemyShips">
+      <End Role="EnemyShip" EntitySet="EnemyShips" />
+      <End Role="EnemyShipSectorAssignment" EntitySet="EnemyShipSectorAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EnemyShipAssignments_Sectors" Association="ArtemisGalaxyDevModel.fk_EnemyShipAssignments_Sectors">
+      <End Role="Sector" EntitySet="Sectors" />
+      <End Role="EnemyShipSectorAssignment" EntitySet="EnemyShipSectorAssignments" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="CampaignEnrollment">
     <Key>
@@ -90,6 +100,7 @@
     <Property Name="production" Type="Int32" Nullable="false" />
     <Property Name="isClaimed" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Campaign" Relationship="ArtemisGalaxyDevModel.fk_sector_campaign" FromRole="Sectors" ToRole="Campaigns" />
+    <NavigationProperty Name="EnemyShipSectorAssignments" Relationship="ArtemisGalaxyDevModel.fk_EnemyShipAssignments_Sectors" FromRole="Sector" ToRole="EnemyShipSectorAssignment" />
   </EntityType>
   <EntityType Name="Ship">
     <Key>
@@ -167,6 +178,61 @@
       </Principal>
       <Dependent Role="Ships">
         <PropertyRef Name="ownerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EnemyShip">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Int16" Name="vesselId" Nullable="false" />
+    <Property Type="Int32" Name="cost" Nullable="false" />
+    <NavigationProperty Name="EnemyShipSectorAssignments" Relationship="ArtemisGalaxyDevModel.fk_EnemyShipSectorAssignments_EnemyShips" FromRole="EnemyShip" ToRole="EnemyShipSectorAssignment" />
+  </EntityType>
+  <EntityType Name="EnemyShipSectorAssignment">
+    <Key>
+      <PropertyRef Name="SectorId" />
+      <PropertyRef Name="EnemyShipId" />
+    </Key>
+    <Property Type="Int64" Name="SectorId" Nullable="false" />
+    <Property Type="Int32" Name="EnemyShipId" Nullable="false" />
+    <Property Type="Int64" Name="locationX" Nullable="false" />
+    <Property Type="Int64" Name="locationY" Nullable="false" />
+    <Property Type="Int16" Name="fullAmount" Nullable="false" />
+    <Property Type="Int16" Name="maxAmount" Nullable="false" />
+    <Property Type="Int16" Name="fleetNumber" Nullable="false" />
+    <NavigationProperty Name="EnemyShip" Relationship="ArtemisGalaxyDevModel.fk_EnemyShipSectorAssignments_EnemyShips" FromRole="EnemyShipSectorAssignment" ToRole="EnemyShip" />
+    <NavigationProperty Name="Sector" Relationship="ArtemisGalaxyDevModel.fk_EnemyShipAssignments_Sectors" FromRole="EnemyShipSectorAssignment" ToRole="Sector" />
+    <Property Type="Int32" Name="productionWeight" Nullable="false" />
+    <Property Type="Int16" Name="currentAmount" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_EnemyShipSectorAssignments_EnemyShips">
+    <End Type="ArtemisGalaxyDevModel.EnemyShip" Role="EnemyShip" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ArtemisGalaxyDevModel.EnemyShipSectorAssignment" Role="EnemyShipSectorAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnemyShip">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnemyShipSectorAssignment">
+        <PropertyRef Name="EnemyShipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EnemyShipAssignments_Sectors">
+    <End Type="ArtemisGalaxyDevModel.Sector" Role="Sector" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ArtemisGalaxyDevModel.EnemyShipSectorAssignment" Role="EnemyShipSectorAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sector">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnemyShipSectorAssignment">
+        <PropertyRef Name="SectorId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

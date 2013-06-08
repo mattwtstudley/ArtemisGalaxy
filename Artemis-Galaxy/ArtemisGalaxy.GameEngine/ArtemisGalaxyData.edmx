@@ -4,11 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ArtemisGalaxyDevModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ArtemisGalaxyDevModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ArtemisGalaxyDevModelStoreContainer">
           <EntitySet Name="CampaignEnrollment" EntityType="ArtemisGalaxyDevModel.Store.CampaignEnrollment" store:Type="Tables" />
           <EntitySet Name="Campaigns" EntityType="ArtemisGalaxyDevModel.Store.Campaigns" store:Type="Tables" />
           <EntitySet Name="CrewMembers" EntityType="ArtemisGalaxyDevModel.Store.CrewMembers" store:Type="Tables" />
+          <EntitySet Name="EnemyShips" EntityType="ArtemisGalaxyDevModel.Store.EnemyShips" store:Type="Tables" />
+          <EntitySet Name="EnemyShipSectorAssignments" EntityType="ArtemisGalaxyDevModel.Store.EnemyShipSectorAssignments" store:Type="Tables" />
           <EntitySet Name="Sectors" EntityType="ArtemisGalaxyDevModel.Store.Sectors" store:Type="Tables" />
           <EntitySet Name="Ships" EntityType="ArtemisGalaxyDevModel.Store.Ships" store:Type="Tables" />
           <AssociationSet Name="fk_CampaignEnrollment_Campaigns" Association="ArtemisGalaxyDevModel.Store.fk_CampaignEnrollment_Campaigns">
@@ -22,6 +24,14 @@
           <AssociationSet Name="fk_CampaignEnrollment_Ships" Association="ArtemisGalaxyDevModel.Store.fk_CampaignEnrollment_Ships">
             <End Role="Ships" EntitySet="Ships" />
             <End Role="CampaignEnrollment" EntitySet="CampaignEnrollment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EnemyShipAssignments_Sectors" Association="ArtemisGalaxyDevModel.Store.fk_EnemyShipAssignments_Sectors">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="EnemyShipSectorAssignments" EntitySet="EnemyShipSectorAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EnemyShipSectorAssignments_EnemyShips" Association="ArtemisGalaxyDevModel.Store.fk_EnemyShipSectorAssignments_EnemyShips">
+            <End Role="EnemyShips" EntitySet="EnemyShips" />
+            <End Role="EnemyShipSectorAssignments" EntitySet="EnemyShipSectorAssignments" />
           </AssociationSet>
           <AssociationSet Name="fk_sector_campaign" Association="ArtemisGalaxyDevModel.Store.fk_sector_campaign">
             <End Role="Campaigns" EntitySet="Campaigns" />
@@ -66,6 +76,30 @@
           <Property Name="passwd" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="timeZone" Type="nvarchar" Nullable="false" MaxLength="4" />
           <Property Name="characterName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EnemyShips">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="vesselId" Type="smallint" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EnemyShipSectorAssignments">
+          <Key>
+            <PropertyRef Name="SectorId" />
+            <PropertyRef Name="EnemyShipId" />
+          </Key>
+          <Property Name="SectorId" Type="bigint" Nullable="false" />
+          <Property Name="EnemyShipId" Type="int" Nullable="false" />
+          <Property Name="locationX" Type="bigint" Nullable="false" />
+          <Property Name="locationY" Type="bigint" Nullable="false" />
+          <Property Name="fullAmount" Type="smallint" Nullable="false" />
+          <Property Name="maxAmount" Type="smallint" Nullable="false" />
+          <Property Name="fleetNumber" Type="smallint" Nullable="false" />
+          <Property Name="productionWeight" Type="int" Nullable="false" />
+          <Property Name="currentAmount" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="Sectors">
           <Key>
@@ -139,6 +173,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_EnemyShipAssignments_Sectors">
+          <End Role="Sectors" Type="ArtemisGalaxyDevModel.Store.Sectors" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EnemyShipSectorAssignments" Type="ArtemisGalaxyDevModel.Store.EnemyShipSectorAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EnemyShipSectorAssignments">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EnemyShipSectorAssignments_EnemyShips">
+          <End Role="EnemyShips" Type="ArtemisGalaxyDevModel.Store.EnemyShips" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EnemyShipSectorAssignments" Type="ArtemisGalaxyDevModel.Store.EnemyShipSectorAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnemyShips">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EnemyShipSectorAssignments">
+              <PropertyRef Name="EnemyShipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_sector_campaign">
           <End Role="Campaigns" Type="ArtemisGalaxyDevModel.Store.Campaigns" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -165,8 +227,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ArtemisGalaxyDevModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -195,6 +256,16 @@
           <AssociationSet Name="fk_Ships_CrewMembers" Association="ArtemisGalaxyDevModel.fk_Ships_CrewMembers">
             <End Role="CrewMembers" EntitySet="CrewMembers" />
             <End Role="Ships" EntitySet="Ships" />
+          </AssociationSet>
+          <EntitySet Name="EnemyShips" EntityType="ArtemisGalaxyDevModel.EnemyShip" />
+          <EntitySet Name="EnemyShipSectorAssignments" EntityType="ArtemisGalaxyDevModel.EnemyShipSectorAssignment" />
+          <AssociationSet Name="fk_EnemyShipSectorAssignments_EnemyShips" Association="ArtemisGalaxyDevModel.fk_EnemyShipSectorAssignments_EnemyShips">
+            <End Role="EnemyShip" EntitySet="EnemyShips" />
+            <End Role="EnemyShipSectorAssignment" EntitySet="EnemyShipSectorAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EnemyShipAssignments_Sectors" Association="ArtemisGalaxyDevModel.fk_EnemyShipAssignments_Sectors">
+            <End Role="Sector" EntitySet="Sectors" />
+            <End Role="EnemyShipSectorAssignment" EntitySet="EnemyShipSectorAssignments" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CampaignEnrollment">
@@ -260,6 +331,7 @@
           <Property Name="production" Type="Int32" Nullable="false" />
           <Property Name="isClaimed" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Campaign" Relationship="ArtemisGalaxyDevModel.fk_sector_campaign" FromRole="Sectors" ToRole="Campaigns" />
+          <NavigationProperty Name="EnemyShipSectorAssignments" Relationship="ArtemisGalaxyDevModel.fk_EnemyShipAssignments_Sectors" FromRole="Sector" ToRole="EnemyShipSectorAssignment" />
         </EntityType>
         <EntityType Name="Ship">
           <Key>
@@ -340,6 +412,61 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EnemyShip">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="vesselId" Nullable="false" />
+          <Property Type="Int32" Name="cost" Nullable="false" />
+          <NavigationProperty Name="EnemyShipSectorAssignments" Relationship="ArtemisGalaxyDevModel.fk_EnemyShipSectorAssignments_EnemyShips" FromRole="EnemyShip" ToRole="EnemyShipSectorAssignment" />
+        </EntityType>
+        <EntityType Name="EnemyShipSectorAssignment">
+          <Key>
+            <PropertyRef Name="SectorId" />
+            <PropertyRef Name="EnemyShipId" />
+          </Key>
+          <Property Type="Int64" Name="SectorId" Nullable="false" />
+          <Property Type="Int32" Name="EnemyShipId" Nullable="false" />
+          <Property Type="Int64" Name="locationX" Nullable="false" />
+          <Property Type="Int64" Name="locationY" Nullable="false" />
+          <Property Type="Int16" Name="fullAmount" Nullable="false" />
+          <Property Type="Int16" Name="maxAmount" Nullable="false" />
+          <Property Type="Int16" Name="fleetNumber" Nullable="false" />
+          <NavigationProperty Name="EnemyShip" Relationship="ArtemisGalaxyDevModel.fk_EnemyShipSectorAssignments_EnemyShips" FromRole="EnemyShipSectorAssignment" ToRole="EnemyShip" />
+          <NavigationProperty Name="Sector" Relationship="ArtemisGalaxyDevModel.fk_EnemyShipAssignments_Sectors" FromRole="EnemyShipSectorAssignment" ToRole="Sector" />
+          <Property Type="Int32" Name="productionWeight" Nullable="false" />
+          <Property Type="Int16" Name="currentAmount" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_EnemyShipSectorAssignments_EnemyShips">
+          <End Type="ArtemisGalaxyDevModel.EnemyShip" Role="EnemyShip" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArtemisGalaxyDevModel.EnemyShipSectorAssignment" Role="EnemyShipSectorAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnemyShip">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EnemyShipSectorAssignment">
+              <PropertyRef Name="EnemyShipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EnemyShipAssignments_Sectors">
+          <End Type="ArtemisGalaxyDevModel.Sector" Role="Sector" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArtemisGalaxyDevModel.EnemyShipSectorAssignment" Role="EnemyShipSectorAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sector">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EnemyShipSectorAssignment">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -411,6 +538,31 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
                 <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnemyShips">
+            <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.EnemyShip">
+              <MappingFragment StoreEntitySet="EnemyShips">
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="vesselId" ColumnName="vesselId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnemyShipSectorAssignments">
+            <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.EnemyShipSectorAssignment">
+              <MappingFragment StoreEntitySet="EnemyShipSectorAssignments">
+                <ScalarProperty Name="currentAmount" ColumnName="currentAmount" />
+                <ScalarProperty Name="productionWeight" ColumnName="productionWeight" />
+                <ScalarProperty Name="fleetNumber" ColumnName="fleetNumber" />
+                <ScalarProperty Name="maxAmount" ColumnName="maxAmount" />
+                <ScalarProperty Name="fullAmount" ColumnName="fullAmount" />
+                <ScalarProperty Name="locationY" ColumnName="locationY" />
+                <ScalarProperty Name="locationX" ColumnName="locationX" />
+                <ScalarProperty Name="EnemyShipId" ColumnName="EnemyShipId" />
+                <ScalarProperty Name="SectorId" ColumnName="SectorId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

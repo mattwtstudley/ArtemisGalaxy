@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1b754886e7744fcba1a90064281eb44d" Name="Diagram1">
-        <EntityTypeShape EntityType="ArtemisGalaxyDevModel.CampaignEnrollment" Width="2.375" PointX="5.875" PointY="4.125" IsExpanded="true" />
+      <Diagram DiagramId="1b754886e7744fcba1a90064281eb44d" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="ArtemisGalaxyDevModel.CampaignEnrollment" Width="2.375" PointX="5.375" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ArtemisGalaxyDevModel.Campaign" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ArtemisGalaxyDevModel.CrewMember" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ArtemisGalaxyDevModel.Sector" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
@@ -15,6 +15,10 @@
         <AssociationConnector Association="ArtemisGalaxyDevModel.fk_CampaignEnrollment_Ships" ManuallyRouted="false" />
         <AssociationConnector Association="ArtemisGalaxyDevModel.fk_sector_campaign" ManuallyRouted="false" />
         <AssociationConnector Association="ArtemisGalaxyDevModel.fk_Ships_CrewMembers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ArtemisGalaxyDevModel.EnemyShip" Width="1.5" PointX="9.875" PointY="6.875" />
+        <EntityTypeShape EntityType="ArtemisGalaxyDevModel.EnemyShipSectorAssignment" Width="1.5" PointX="6.375" PointY="6.625" />
+        <AssociationConnector Association="ArtemisGalaxyDevModel.fk_EnemyShipSectorAssignments_EnemyShips" />
+        <AssociationConnector Association="ArtemisGalaxyDevModel.fk_EnemyShipAssignments_Sectors" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

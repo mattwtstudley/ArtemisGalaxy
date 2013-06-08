@@ -67,7 +67,13 @@
     <Compile Include="CampaignEnrollment.cs">
       <DependentUpon>ArtemisGalaxyData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="EnemyShip.cs">
+      <DependentUpon>ArtemisGalaxyData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EnemyShipSectorAssignment.cs">
+      <DependentUpon>ArtemisGalaxyData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateEngine.cs" />
     <Compile Include="CrewMember.cs">
       <DependentUpon>ArtemisGalaxyData.tt</DependentUpon>
     </Compile>
