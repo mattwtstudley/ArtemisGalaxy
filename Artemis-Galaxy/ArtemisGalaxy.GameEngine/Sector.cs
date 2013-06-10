@@ -17,6 +17,7 @@ namespace ArtemisGalaxy.GameEngine
         public Sector()
         {
             this.EnemyShipSectorAssignments = new HashSet<EnemyShipSectorAssignment>();
+            this.MunitionsSectorAssignments = new HashSet<MunitionsSectorAssignment>();
         }
     
         public long id { get; set; }
@@ -38,5 +39,6 @@ namespace ArtemisGalaxy.GameEngine
     
         public virtual Campaign Campaign { get; set; }
         public virtual ICollection<EnemyShipSectorAssignment> EnemyShipSectorAssignments { get; set; }
+        public virtual ICollection<MunitionsSectorAssignment> MunitionsSectorAssignments { get; set; }
     }
 }

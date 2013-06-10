@@ -11,6 +11,8 @@
           <EntitySet Name="CrewMembers" EntityType="ArtemisGalaxyDevModel.Store.CrewMembers" store:Type="Tables" />
           <EntitySet Name="EnemyShips" EntityType="ArtemisGalaxyDevModel.Store.EnemyShips" store:Type="Tables" />
           <EntitySet Name="EnemyShipSectorAssignments" EntityType="ArtemisGalaxyDevModel.Store.EnemyShipSectorAssignments" store:Type="Tables" />
+          <EntitySet Name="Munitions" EntityType="ArtemisGalaxyDevModel.Store.Munitions" store:Type="Tables" />
+          <EntitySet Name="MunitionsSectorAssignments" EntityType="ArtemisGalaxyDevModel.Store.MunitionsSectorAssignments" store:Type="Tables" />
           <EntitySet Name="Sectors" EntityType="ArtemisGalaxyDevModel.Store.Sectors" store:Type="Tables" />
           <EntitySet Name="Ships" EntityType="ArtemisGalaxyDevModel.Store.Ships" store:Type="Tables" />
           <AssociationSet Name="fk_CampaignEnrollment_Campaigns" Association="ArtemisGalaxyDevModel.Store.fk_CampaignEnrollment_Campaigns">
@@ -33,6 +35,14 @@
             <End Role="EnemyShips" EntitySet="EnemyShips" />
             <End Role="EnemyShipSectorAssignments" EntitySet="EnemyShipSectorAssignments" />
           </AssociationSet>
+          <AssociationSet Name="fk_MunitionSectorAssignments_Munitions" Association="ArtemisGalaxyDevModel.Store.fk_MunitionSectorAssignments_Munitions">
+            <End Role="Munitions" EntitySet="Munitions" />
+            <End Role="MunitionsSectorAssignments" EntitySet="MunitionsSectorAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MunitionSectorAssignments_Sectors" Association="ArtemisGalaxyDevModel.Store.fk_MunitionSectorAssignments_Sectors">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="MunitionsSectorAssignments" EntitySet="MunitionsSectorAssignments" />
+          </AssociationSet>
           <AssociationSet Name="fk_sector_campaign" Association="ArtemisGalaxyDevModel.Store.fk_sector_campaign">
             <End Role="Campaigns" EntitySet="Campaigns" />
             <End Role="Sectors" EntitySet="Sectors" />
@@ -51,6 +61,7 @@
           <Property Name="campaignId" Type="int" Nullable="false" />
           <Property Name="shipId" Type="bigint" Nullable="false" />
           <Property Name="crewMemberId" Type="bigint" Nullable="false" />
+          <Property Name="isDestroyed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Campaigns">
           <Key>
@@ -90,6 +101,7 @@
           <Key>
             <PropertyRef Name="SectorId" />
             <PropertyRef Name="EnemyShipId" />
+            <PropertyRef Name="fleetNumber" />
           </Key>
           <Property Name="SectorId" Type="bigint" Nullable="false" />
           <Property Name="EnemyShipId" Type="int" Nullable="false" />
@@ -100,6 +112,27 @@
           <Property Name="fleetNumber" Type="smallint" Nullable="false" />
           <Property Name="productionWeight" Type="int" Nullable="false" />
           <Property Name="currentAmount" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Munitions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="munitionType" Type="smallint" Nullable="false" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="cost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MunitionsSectorAssignments">
+          <Key>
+            <PropertyRef Name="SectorId" />
+            <PropertyRef Name="MunitionId" />
+          </Key>
+          <Property Name="SectorId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MunitionId" Type="int" Nullable="false" />
+          <Property Name="currentAmount" Type="int" />
+          <Property Name="fullAmount" Type="int" Nullable="false" />
+          <Property Name="maxAmount" Type="int" Nullable="false" />
+          <Property Name="productionWeight" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Sectors">
           <Key>
@@ -201,6 +234,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_MunitionSectorAssignments_Munitions">
+          <End Role="Munitions" Type="ArtemisGalaxyDevModel.Store.Munitions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MunitionsSectorAssignments" Type="ArtemisGalaxyDevModel.Store.MunitionsSectorAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Munitions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MunitionsSectorAssignments">
+              <PropertyRef Name="MunitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MunitionSectorAssignments_Sectors">
+          <End Role="Sectors" Type="ArtemisGalaxyDevModel.Store.Sectors" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MunitionsSectorAssignments" Type="ArtemisGalaxyDevModel.Store.MunitionsSectorAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MunitionsSectorAssignments">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_sector_campaign">
           <End Role="Campaigns" Type="ArtemisGalaxyDevModel.Store.Campaigns" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -267,6 +328,16 @@
             <End Role="Sector" EntitySet="Sectors" />
             <End Role="EnemyShipSectorAssignment" EntitySet="EnemyShipSectorAssignments" />
           </AssociationSet>
+          <EntitySet Name="Munitions" EntityType="ArtemisGalaxyDevModel.Munition" />
+          <EntitySet Name="MunitionsSectorAssignments" EntityType="ArtemisGalaxyDevModel.MunitionsSectorAssignment" />
+          <AssociationSet Name="fk_MunitionSectorAssignments_Munitions" Association="ArtemisGalaxyDevModel.fk_MunitionSectorAssignments_Munitions">
+            <End Role="Munition" EntitySet="Munitions" />
+            <End Role="MunitionsSectorAssignment" EntitySet="MunitionsSectorAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MunitionSectorAssignments_Sectors" Association="ArtemisGalaxyDevModel.fk_MunitionSectorAssignments_Sectors">
+            <End Role="Sector" EntitySet="Sectors" />
+            <End Role="MunitionsSectorAssignment" EntitySet="MunitionsSectorAssignments" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CampaignEnrollment">
           <Key>
@@ -280,6 +351,7 @@
           <NavigationProperty Name="Campaign" Relationship="ArtemisGalaxyDevModel.fk_CampaignEnrollment_Campaigns" FromRole="CampaignEnrollment" ToRole="Campaigns" />
           <NavigationProperty Name="CrewMember" Relationship="ArtemisGalaxyDevModel.fk_CampaignEnrollment_CrewMembers" FromRole="CampaignEnrollment" ToRole="CrewMembers" />
           <NavigationProperty Name="Ship" Relationship="ArtemisGalaxyDevModel.fk_CampaignEnrollment_Ships" FromRole="CampaignEnrollment" ToRole="Ships" />
+          <Property Type="Boolean" Name="isDestroyed" Nullable="false" />
         </EntityType>
         <EntityType Name="Campaign">
           <Key>
@@ -332,6 +404,7 @@
           <Property Name="isClaimed" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Campaign" Relationship="ArtemisGalaxyDevModel.fk_sector_campaign" FromRole="Sectors" ToRole="Campaigns" />
           <NavigationProperty Name="EnemyShipSectorAssignments" Relationship="ArtemisGalaxyDevModel.fk_EnemyShipAssignments_Sectors" FromRole="Sector" ToRole="EnemyShipSectorAssignment" />
+          <NavigationProperty Name="MunitionsSectorAssignments" Relationship="ArtemisGalaxyDevModel.fk_MunitionSectorAssignments_Sectors" FromRole="Sector" ToRole="MunitionsSectorAssignment" />
         </EntityType>
         <EntityType Name="Ship">
           <Key>
@@ -426,6 +499,7 @@
           <Key>
             <PropertyRef Name="SectorId" />
             <PropertyRef Name="EnemyShipId" />
+            <PropertyRef Name="fleetNumber" />
           </Key>
           <Property Type="Int64" Name="SectorId" Nullable="false" />
           <Property Type="Int32" Name="EnemyShipId" Nullable="false" />
@@ -467,6 +541,58 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Munition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="munitionType" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="cost" Nullable="false" />
+          <NavigationProperty Name="MunitionsSectorAssignments" Relationship="ArtemisGalaxyDevModel.fk_MunitionSectorAssignments_Munitions" FromRole="Munition" ToRole="MunitionsSectorAssignment" />
+        </EntityType>
+        <EntityType Name="MunitionsSectorAssignment">
+          <Key>
+            <PropertyRef Name="SectorId" />
+            <PropertyRef Name="MunitionId" />
+          </Key>
+          <Property Type="Int64" Name="SectorId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MunitionId" Nullable="false" />
+          <Property Type="Int32" Name="currentAmount" />
+          <Property Type="Int32" Name="fullAmount" Nullable="false" />
+          <Property Type="Int32" Name="maxAmount" Nullable="false" />
+          <NavigationProperty Name="Munition" Relationship="ArtemisGalaxyDevModel.fk_MunitionSectorAssignments_Munitions" FromRole="MunitionsSectorAssignment" ToRole="Munition" />
+          <NavigationProperty Name="Sector" Relationship="ArtemisGalaxyDevModel.fk_MunitionSectorAssignments_Sectors" FromRole="MunitionsSectorAssignment" ToRole="Sector" />
+          <Property Type="Int32" Name="productionWeight" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_MunitionSectorAssignments_Munitions">
+          <End Type="ArtemisGalaxyDevModel.Munition" Role="Munition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArtemisGalaxyDevModel.MunitionsSectorAssignment" Role="MunitionsSectorAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Munition">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MunitionsSectorAssignment">
+              <PropertyRef Name="MunitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MunitionSectorAssignments_Sectors">
+          <End Type="ArtemisGalaxyDevModel.Sector" Role="Sector" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArtemisGalaxyDevModel.MunitionsSectorAssignment" Role="MunitionsSectorAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sector">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MunitionsSectorAssignment">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -476,6 +602,7 @@
           <EntitySetMapping Name="CampaignEnrollments">
             <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.CampaignEnrollment">
               <MappingFragment StoreEntitySet="CampaignEnrollment">
+                <ScalarProperty Name="isDestroyed" ColumnName="isDestroyed" />
                 <ScalarProperty Name="campaignId" ColumnName="campaignId" />
                 <ScalarProperty Name="shipId" ColumnName="shipId" />
                 <ScalarProperty Name="crewMemberId" ColumnName="crewMemberId" />
@@ -562,6 +689,28 @@
                 <ScalarProperty Name="locationY" ColumnName="locationY" />
                 <ScalarProperty Name="locationX" ColumnName="locationX" />
                 <ScalarProperty Name="EnemyShipId" ColumnName="EnemyShipId" />
+                <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Munitions">
+            <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.Munition">
+              <MappingFragment StoreEntitySet="Munitions">
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="munitionType" ColumnName="munitionType" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MunitionsSectorAssignments">
+            <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.MunitionsSectorAssignment">
+              <MappingFragment StoreEntitySet="MunitionsSectorAssignments">
+                <ScalarProperty Name="productionWeight" ColumnName="productionWeight" />
+                <ScalarProperty Name="maxAmount" ColumnName="maxAmount" />
+                <ScalarProperty Name="fullAmount" ColumnName="fullAmount" />
+                <ScalarProperty Name="currentAmount" ColumnName="currentAmount" />
+                <ScalarProperty Name="MunitionId" ColumnName="MunitionId" />
                 <ScalarProperty Name="SectorId" ColumnName="SectorId" />
               </MappingFragment>
             </EntityTypeMapping>

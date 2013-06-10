@@ -61,6 +61,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ArtemisGalaxyData.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BattleEngine.cs" />
+    <Compile Include="BattleResult.cs" />
     <Compile Include="Campaign.cs">
       <DependentUpon>ArtemisGalaxyData.tt</DependentUpon>
     </Compile>
@@ -71,6 +73,12 @@
       <DependentUpon>ArtemisGalaxyData.tt</DependentUpon>
     </Compile>
     <Compile Include="EnemyShipSectorAssignment.cs">
+      <DependentUpon>ArtemisGalaxyData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Munition.cs">
+      <DependentUpon>ArtemisGalaxyData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MunitionsSectorAssignment.cs">
       <DependentUpon>ArtemisGalaxyData.tt</DependentUpon>
     </Compile>
     <Compile Include="UpdateEngine.cs" />

@@ -12,15 +12,18 @@ namespace ArtemisGalaxy.GameEngine
     using System;
     using System.Collections.Generic;
     
-    public partial class CampaignEnrollment
+    public partial class Munition
     {
-        public int campaignId { get; set; }
-        public long shipId { get; set; }
-        public long crewMemberId { get; set; }
-        public bool isDestroyed { get; set; }
+        public Munition()
+        {
+            this.MunitionsSectorAssignments = new HashSet<MunitionsSectorAssignment>();
+        }
     
-        public virtual Campaign Campaign { get; set; }
-        public virtual CrewMember CrewMember { get; set; }
-        public virtual Ship Ship { get; set; }
+        public int id { get; set; }
+        public short munitionType { get; set; }
+        public string name { get; set; }
+        public int cost { get; set; }
+    
+        public virtual ICollection<MunitionsSectorAssignment> MunitionsSectorAssignments { get; set; }
     }
 }

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="CampaignEnrollments">
       <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.CampaignEnrollment">
         <MappingFragment StoreEntitySet="CampaignEnrollment">
+          <ScalarProperty Name="isDestroyed" ColumnName="isDestroyed" />
           <ScalarProperty Name="campaignId" ColumnName="campaignId" />
           <ScalarProperty Name="shipId" ColumnName="shipId" />
           <ScalarProperty Name="crewMemberId" ColumnName="crewMemberId" />
@@ -90,6 +91,28 @@
           <ScalarProperty Name="locationY" ColumnName="locationY" />
           <ScalarProperty Name="locationX" ColumnName="locationX" />
           <ScalarProperty Name="EnemyShipId" ColumnName="EnemyShipId" />
+          <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Munitions">
+      <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.Munition">
+        <MappingFragment StoreEntitySet="Munitions">
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="munitionType" ColumnName="munitionType" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MunitionsSectorAssignments">
+      <EntityTypeMapping TypeName="ArtemisGalaxyDevModel.MunitionsSectorAssignment">
+        <MappingFragment StoreEntitySet="MunitionsSectorAssignments">
+          <ScalarProperty Name="productionWeight" ColumnName="productionWeight" />
+          <ScalarProperty Name="maxAmount" ColumnName="maxAmount" />
+          <ScalarProperty Name="fullAmount" ColumnName="fullAmount" />
+          <ScalarProperty Name="currentAmount" ColumnName="currentAmount" />
+          <ScalarProperty Name="MunitionId" ColumnName="MunitionId" />
           <ScalarProperty Name="SectorId" ColumnName="SectorId" />
         </MappingFragment>
       </EntityTypeMapping>
