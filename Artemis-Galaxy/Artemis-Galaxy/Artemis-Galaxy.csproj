@@ -230,6 +230,41 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Lib\Antlr3.Runtime.dll" />
+    <Content Include="Lib\AspNet.ScriptManager.jQuery.dll" />
+    <Content Include="Lib\AspNet.ScriptManager.jQuery.UI.Combined.dll" />
+    <Content Include="Lib\DotNetOpenAuth.AspNet.dll" />
+    <Content Include="Lib\DotNetOpenAuth.Core.dll" />
+    <Content Include="Lib\DotNetOpenAuth.OAuth.Consumer.dll" />
+    <Content Include="Lib\DotNetOpenAuth.OAuth.dll" />
+    <Content Include="Lib\DotNetOpenAuth.OpenId.dll" />
+    <Content Include="Lib\DotNetOpenAuth.OpenId.RelyingParty.dll" />
+    <Content Include="Lib\EntityFramework.dll" />
+    <Content Include="Lib\Microsoft.AspNet.Membership.OpenAuth.dll" />
+    <Content Include="Lib\Microsoft.AspNet.Web.Optimization.WebForms.dll" />
+    <Content Include="Lib\Microsoft.CSharp.dll" />
+    <Content Include="Lib\Microsoft.ScriptManager.MSAjax.dll" />
+    <Content Include="Lib\Microsoft.ScriptManager.WebForms.dll" />
+    <Content Include="Lib\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="Lib\System.ComponentModel.DataAnnotations.dll" />
+    <Content Include="Lib\System.Configuration.dll" />
+    <Content Include="Lib\System.Data.DataSetExtensions.dll" />
+    <Content Include="Lib\System.Data.dll" />
+    <Content Include="Lib\System.dll" />
+    <Content Include="Lib\System.Drawing.dll" />
+    <Content Include="Lib\System.EnterpriseServices.dll" />
+    <Content Include="Lib\System.EnterpriseServices.Wrapper.dll" />
+    <Content Include="Lib\System.Web.ApplicationServices.dll" />
+    <Content Include="Lib\System.Web.dll" />
+    <Content Include="Lib\System.Web.DynamicData.dll" />
+    <Content Include="Lib\System.Web.Entity.dll" />
+    <Content Include="Lib\System.Web.Extensions.dll" />
+    <Content Include="Lib\System.Web.Optimization.dll" />
+    <Content Include="Lib\System.Web.Providers.dll" />
+    <Content Include="Lib\System.Web.Services.dll" />
+    <Content Include="Lib\System.Xml.dll" />
+    <Content Include="Lib\System.Xml.Linq.dll" />
+    <Content Include="Lib\WebGrease.dll" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -338,7 +373,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Lib\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

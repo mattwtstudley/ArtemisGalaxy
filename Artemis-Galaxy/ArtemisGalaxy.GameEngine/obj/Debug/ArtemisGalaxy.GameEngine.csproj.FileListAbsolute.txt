@@ -26,3 +26,21 @@ C:\Users\Sarge\Documents\Development\ArtemisGalaxy\Artemis-Galaxy\ArtemisGalaxy.
 C:\Users\Sarge\Documents\Development\ArtemisGalaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Security.dll
 C:\Users\Sarge\Documents\Development\ArtemisGalaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Xml.dll
 C:\Users\Sarge\Documents\Development\ArtemisGalaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Xml.Linq.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\ArtemisGalaxyDev.sdf
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\ArtemisGalaxy.GameEngine.dll.config
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\ArtemisGalaxy.GameEngine.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\ArtemisGalaxy.GameEngine.pdb
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\EntityFramework.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\Microsoft.CSharp.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.ComponentModel.DataAnnotations.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Data.DataSetExtensions.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Data.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Data.Entity.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Runtime.Serialization.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Security.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Xml.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\bin\Debug\System.Xml.Linq.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\obj\Debug\ArtemisGalaxy.GameEngine.csprojResolveAssemblyReference.cache
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\obj\Debug\ArtemisGalaxy.GameEngine.dll
+C:\Users\Matthew_Studley\Documents\Other Projects\Artemis-Galaxy\Artemis-Galaxy\ArtemisGalaxy.GameEngine\obj\Debug\ArtemisGalaxy.GameEngine.pdb
