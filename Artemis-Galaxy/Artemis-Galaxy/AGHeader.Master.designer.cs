@@ -13,22 +13,13 @@ namespace Artemis_Galaxy {
     public partial class AGHeader {
         
         /// <summary>
-        /// head control.
+        /// cphHtmlHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
-        /// <summary>
-        /// cphNavBar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphNavBar;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphHtmlHead;
         
         /// <summary>
         /// cphMainContent control.

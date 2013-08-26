@@ -4,15 +4,38 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
+    <title>Artemis Galaxy</title>
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen" />
+    <script src="Scripts/jquery-1.7.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <asp:ContentPlaceHolder ID="cphHtmlHead" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div>
-        <asp:ContentPlaceHolder ID="cphMainContent" runat="server">
-        
-        </asp:ContentPlaceHolder>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">Artemis Galaxy</a>
+                <ul class="nav">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Sign In</a>
+                    </li>
+                    <li>
+                        <a href="#">Sign In</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+    <asp:ContentPlaceHolder ID="cphMainContent" runat="server">
+    </asp:ContentPlaceHolder>
+
 </body>
 </html>
