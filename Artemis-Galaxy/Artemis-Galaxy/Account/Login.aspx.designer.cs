@@ -7,13 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Artemis_Galaxy.Account
-{
-
-
-    public partial class Login
-    {
-
+namespace Artemis_Galaxy.Account {
+    
+    
+    public partial class Login {
+        
+        /// <summary>
+        /// frmLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmLogin;
+        
         /// <summary>
         /// RegisterHyperLink control.
         /// </summary>
@@ -22,14 +29,5 @@ namespace Artemis_Galaxy.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink RegisterHyperLink;
-
-        /// <summary>
-        /// OpenAuthLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Artemis_Galaxy.Account.OpenAuthProviders OpenAuthLogin;
     }
 }

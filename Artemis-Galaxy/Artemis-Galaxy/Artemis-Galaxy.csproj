@@ -160,6 +160,10 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="App_Data\aspnet-Artemis-Galaxy-20130605215211.mdf" />
+    <Content Include="App_Data\aspnet-Artemis-Galaxy-20130605215211_log.ldf">
+      <DependentUpon>aspnet-Artemis-Galaxy-20130605215211.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\ArtemisGalaxyTheme\images\animated-overlay.gif" />
     <Content Include="Content\themes\ArtemisGalaxyTheme\images\ui-bg_diagonals-medium_30_a32d00_40x40.png" />
@@ -435,9 +439,7 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />

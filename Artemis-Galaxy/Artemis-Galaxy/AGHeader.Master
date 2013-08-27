@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Artemis Galaxy</title>
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen" />
-    <script src="Scripts/jquery-1.7.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link href="/css/bootstrap.css" rel="stylesheet" media="screen" />
+    <script src="/Scripts/jquery-1.7.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <asp:ContentPlaceHolder ID="cphHtmlHead" runat="server">
     </asp:ContentPlaceHolder>
@@ -16,17 +16,17 @@
     <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Artemis Galaxy</a>
+                <a class="navbar-brand" href="/Default.aspx">Artemis Galaxy</a>
             </div>
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="/Default.aspx">Home</a>
                 </li>
                 <li>
-                    <a href="#">Log In</a>
+                    <a href="/Account/Login.aspx">Log In</a>
                 </li>
                 <li>
-                    <a href="Account/Register.aspx">Sign Up</a>
+                    <a href="/Account/Register.aspx">Sign Up</a>
                 </li>
                 <li>
                     <a href="#">About</a>
