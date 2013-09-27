@@ -23,38 +23,37 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Customize Avatar</div>
                                     <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-lg-4">
-                                                        <asp:Label ID="Label1" runat="server">Avatar:</asp:Label>
-                                                        <br />
-                                                        <asp:Image ID="imgProfileAvatar" ImageUrl="~/img/Avatars/NoAvatar.png" runat="server" Width="128" Height="128" />
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <asp:Label ID="Label1" runat="server">Avatar:</asp:Label>
+                                                <br />
+                                                <asp:Image ID="imgProfileAvatar" ImageUrl="~/img/Avatars/NoAvatar.png" runat="server" Width="128" Height="128" />
+                                            </div>
+                                            <div class="col-lg-4 ">
+                                                <div class="panel panel-info">
+                                                    <div class="panel-heading">
+                                                        Avatar rules:
                                                     </div>
-                                                    <div class="col-lg-4 ">
-                                                        <div class="panel panel-info">
-                                                            <div class="panel-heading">
-                                                                Avatar rules:
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                Avatars should be 128x128 and can be ing png or jpg formats. 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>          
-                                                <div class="row">
-                                                    <div class="btn-group">
-                                                        <div class="col-lg-8">
-                                                            <asp:FileUpload ID="fuAvatarUpload" runat="server" />
-                                                        </div>
-                                                        <div class="col-lg-2">
-                                                            <asp:Button ID="btnUploadNewAvatar" runat="server" Text="Upload new Avatar" />
-                                                        </div>
+                                                    <div class="panel-body">
+                                                        Avatars should be 128x128 and can be ing png or jpg formats. 
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-lg-4">
+                                                <asp:FileUpload ID="fuAvatarUpload" runat="server" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <asp:Button ID="btnUploadNewAvatar" runat="server" Text="Upload new Avatar" CssClass="btn" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <asp:Button runat="server" ID="btnSaveChanges" Text="Save Changes" />
+                                <asp:Button runat="server" ID="btnSaveChanges" Text="Save Changes" CssClass="btn btn-primary" />
                             </li>
                         </ol>
                     </section>
