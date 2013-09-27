@@ -34,10 +34,7 @@
                                                 <div class="form-control">
                                                     Remember me?
                                                 </div>
-                                                
                                             </div>
-
-
                                         </li>
                                     </ol>
                                     <asp:Button runat="server" CommandName="Login" Text="Log in" />
